@@ -1,12 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import MemoryGame from './components/MemoryGame'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import VisibleMemoryGame from './containers/VisibleMemoryGame'
+
+import { GameReducer } from './store/reducer'
 
 document.head.removeChild(document.querySelector('#splash-spinner'))
 document.body.removeChild(document.querySelector('.spinner'))
 
-render(MemoryGame)
+const store = createStore(GameReducer)
+
+render(VisibleMemoryGame)
 
 function render(Component) {
-  return ReactDOM.render(<Component />, document.getElementById('memory-game'))
+  ReactDOM.render(
+    <Provider store={store}>
+      <Component />
+    </Provider>,
+    document.getElementById('memory-game')
+  )
 }
