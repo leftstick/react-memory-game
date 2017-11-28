@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "start": "webpack-dev-server --config compile/webpack.config.dev.js",
-    "build": "react-scripts build"
+    "build": "rm -rf dist/ && webpack --config compile/webpack.config.prod.js",
+    "deploy": "npm run build; git checkout gh-pages; rm -rf *.*; mv dist/* ."
   },
   "dependencies": {
     "prop-types": "^15.6.0",

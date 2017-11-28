@@ -1,7 +1,6 @@
 const { resolve } = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const root = resolve(__dirname, '..')
 
@@ -25,7 +24,7 @@ module.exports = function(isDev) {
           ]
         },
         {
-          test: /\.jsx$/,
+          test: /\.jsx?$/,
           use: ['babel-loader', 'eslint-loader'],
           exclude: /node_modules/
         },
@@ -40,8 +39,6 @@ module.exports = function(isDev) {
       extensions: ['.js', '.jsx']
     },
     plugins: [
-      new FriendlyErrorsWebpackPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
       new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
