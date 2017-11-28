@@ -8,10 +8,6 @@ import Score from './Score'
 import './Dashboard.css'
 
 class Dashboard extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <div styleName="status-bar">

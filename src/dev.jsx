@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { AppContainer } from 'react-hot-loader'
-import MemoryGame from './components/MemoryGame'
+import VisibleMemoryGame from './containers/VisibleMemoryGame'
 
 import { GameReducer } from './store/reducer'
 
@@ -15,16 +15,16 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-render(MemoryGame)
+render(VisibleMemoryGame)
 
 if (module.hot) {
-  module.hot.accept('./components/MemoryGame', () => {
-    render(MemoryGame)
+  module.hot.accept('./containers/VisibleMemoryGame', () => {
+    render(VisibleMemoryGame)
   })
 }
 
 function render(Component) {
-  return ReactDOM.render(
+  ReactDOM.render(
     <Provider store={store}>
       <AppContainer>
         <Component />
