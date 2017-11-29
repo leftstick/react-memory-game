@@ -9,10 +9,10 @@ class PlayStatus extends React.Component {
   constructor(props) {
     super(props)
 
-    this._stop = this._stop.bind(this)
+    this._stop = this._playAgain.bind(this)
   }
 
-  _stop(e) {
+  _playAgain(e) {
     e.preventDefault()
     e.stopPropagation()
     this.props.reset()
@@ -27,7 +27,7 @@ class PlayStatus extends React.Component {
     }
     if (this.props.status === STATUS.PASS) {
       return (
-        <a href="" onClick={this._stop}>
+        <a href="" onClick={this._playAgain}>
           Play again
         </a>
       )
