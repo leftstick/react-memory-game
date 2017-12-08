@@ -1,5 +1,5 @@
 {
-  "presets": [["es2015", { "modules": false }]],
+  "presets": [["env", { "modules": false }], "react"],
   "plugins": [
     [
       "react-css-modules",
@@ -7,7 +7,6 @@
         "generateScopedName": "[path]_[name]_[local]_[hash:base64:5]"
       }
     ],
-    "transform-react-jsx",
     "syntax-dynamic-import",
     "transform-object-rest-spread",
     "react-hot-loader/babel"
