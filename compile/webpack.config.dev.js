@@ -8,6 +8,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const root = resolve(__dirname, '..')
 
 module.exports = merge(base(true), {
+  mode: 'development',
   entry: {
     app: ['react-hot-loader/patch', resolve(root, 'src', 'dev.jsx')]
   },

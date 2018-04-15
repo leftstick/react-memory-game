@@ -1,5 +1,6 @@
 {
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "npm.registry": "https://registry.npm.taobao.org"
 }
