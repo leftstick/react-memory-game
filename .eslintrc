@@ -1,17 +1,8 @@
 {
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "env": {
-    "browser": true
-  },
-  "extends": ["standard", "plugin:react/recommended", "prettier", "prettier/react", "prettier/standard"],
-  "plugins": ["react", "prettier", "standard"],
+  "extends": ["eslint-config-umi", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "error"
+    "max-len": ["error", { "code": 120 }],
+    "react/prop-types": ["error"]
   }
 }

@@ -1,11 +1,12 @@
-# dependencies
-/node_modules
-package-lock.json
+#npm
+node_modules
 
-# production
-/dist
+#umi
+.umi
+.umi-production
+dist
+*zip-dist*
 
-# misc
+#misc
 .DS_Store
-
-npm-debug.log*
+package-lock.json
