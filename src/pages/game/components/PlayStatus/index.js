@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
 
@@ -6,10 +6,34 @@ import { STATUS } from '../../../../helpers/gameData'
 
 import styles from './index.less'
 
-function PlayStatus({ elapsedMs, status, dispatch }) {
+function computeGameStatus(dispatch, status) {
+  const _playAgain = e => {
+    e.preventDefault()
+    e.stopPropagation()
+    dispatch({ type: 'game/reset' })
+  }
+
+  const READY = <span>Ready</span>
+  const PLAYING = <span>Playing</span>
+  const PASS = (
+    <b className={styles.playAgain} onClick={_playAgain}>
+      Play again
+    </b>
+  )
+
+  const statusMap = new Map([[STATUS.READY, READY], [STATUS.PLAYING, PLAYING], [STATUS.PASS, PASS]])
+
+  return statusMap.get(status)
+}
+
+function PlayStatus(props) {
+  const { elapsedMs, status, dispatch } = props
+
+  const gameStatus = useMemo(() => computeGameStatus(dispatch, status), [dispatch, status])
+
   return (
     <div className={styles.statusBar}>
-      <InfoItem status={status} playAgain={() => dispatch({ type: 'game/reset' })} />
+      {gameStatus}
       <span className={styles.elapsed}>{elapsedMs} s</span>
     </div>
   )
@@ -19,34 +43,6 @@ PlayStatus.propTypes = {
   elapsedMs: PropTypes.number.isRequired,
   status: PropTypes.string.isRequired,
   dispatch: PropTypes.func
-}
-
-function InfoItem({ status, playAgain }) {
-  function _playAgain(e) {
-    e.preventDefault()
-    e.stopPropagation()
-    playAgain()
-  }
-
-  if (status === STATUS.READY) {
-    return <span>Ready</span>
-  }
-  if (status === STATUS.PLAYING) {
-    return <span>Playing</span>
-  }
-  if (status === STATUS.PASS) {
-    return (
-      <a href className={styles.playAgain} onClick={_playAgain}>
-        Play again
-      </a>
-    )
-  }
-  return null
-}
-
-InfoItem.propTypes = {
-  status: PropTypes.string.isRequired,
-  playAgain: PropTypes.func
 }
 
 export default connect(({ game }) => {
