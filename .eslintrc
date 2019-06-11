@@ -1,8 +1,10 @@
 {
   "extends": ["eslint-config-umi", "plugin:prettier/recommended"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "react-hooks"],
   "rules": {
     "max-len": ["error", { "code": 120 }],
-    "react/prop-types": ["error"]
+    "react/prop-types": ["error"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
