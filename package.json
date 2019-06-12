@@ -1,7 +1,7 @@
 {
   "name": "react-memory-game",
   "version": "0.1.0",
-  "license": "GPL",
+  "license": "GPL-3.0",
   "scripts": {
     "start": "umi dev",
     "build": "umi build",

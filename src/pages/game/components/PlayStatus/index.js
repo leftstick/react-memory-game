@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from 'react'
+import React, { useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
 
@@ -6,30 +6,38 @@ import { STATUS } from '../../../../helpers/gameData'
 
 import styles from './index.less'
 
-const READY = <span>Ready</span>
-const PLAYING = <span>Playing</span>
-let PASS = (
-  <b id="pass" className={styles.playAgain}>
+const READY = () => <span>Ready</span>
+const PLAYING = () => <span>Playing</span>
+const PASS = ({ onClick }) => (
+  <b
+    className={styles.playAgain}
+    onClick={e => {
+      e.preventDefault()
+      e.stopPropagation()
+
+      onClick && onClick()
+    }}
+  >
     Play again
   </b>
 )
-const statusMap = new Map([[STATUS.READY, READY], [STATUS.PLAYING, PLAYING], [STATUS.PASS, PASS]])
+
+PASS.propTypes = {
+  onClick: PropTypes.func
+}
 
 function PlayStatus(props) {
   const { elapsedMs, status, dispatch } = props
 
-  useEffect(() => {
-    if (status === STATUS.PASS) {
-      const dom = document.getElementById('pass')
-      dom.onclick = e => {
-        e.preventDefault()
-        e.stopPropagation()
-        dispatch({ type: 'game/reset' })
-      }
-    }
-  }, [dispatch, status])
+  const [statusMap] = useState(
+    new Map([
+      [STATUS.READY, READY()],
+      [STATUS.PLAYING, PLAYING()],
+      [STATUS.PASS, PASS({ onClick: () => dispatch({ type: 'game/reset' }) })]
+    ])
+  )
 
-  const gameStatus = useMemo(() => statusMap.get(status), [status])
+  const gameStatus = useMemo(() => statusMap.get(status), [status, statusMap])
 
   return (
     <div className={styles.statusBar}>
