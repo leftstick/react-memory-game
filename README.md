@@ -1,21 +1,19 @@
-react-memory-game
-==================
+# react-memory-game
+
 ![][david-url]
 ![][license-url]
 
 A tiny game written in `react-16.1.1`. It's inspired by IgorMinar's [Memory-Game](https://github.com/IgorMinar/Memory-Game). You can view the online demo [here](http://leftstick.github.io/react-memory-game).
 
->If you are looking for `angular5` version, check it [here](https://github.com/leftstick/angular5-memory-game)
+> If you are looking for `angular5` version, check it [here](https://github.com/leftstick/angular5-memory-game)
 
->If you are looking for `vue2` version, check it [here](https://github.com/leftstick/vue-memory-game)
+> If you are looking for `vue2` version, check it [here](https://github.com/leftstick/vue-memory-game)
 
-
-## Components Tree ##
+## Components Tree
 
 ![](https://raw.githubusercontent.com/leftstick/react-memory-game/master/docs/img/components.png)
 
-
-## Presentational Components break down ##
+## Presentational Components break down
 
 1. `MemoryGame`, the whole game board
 2. `Dashboard`, the panel on the top, including "logo", "progress", "best result"
@@ -26,50 +24,39 @@ A tiny game written in `react-16.1.1`. It's inspired by IgorMinar's [Memory-Game
 7. `Card`, each card in the `Chessboard`
 8. `PlayStatus`, the footer part, displaying current status of game
 
-## Container Components break down ##
-
-1. `VisibleMemoryGame`, connect `redux` store with `MemoryGame`
-2. `VisibleChessboard`, connect `redux` store with `Chessboard`
-3. `VisibleDashboard`, connect `redux` store with `Dashboard`
-4. `VisiblePlayStatus`, connect `redux` store with `PlayStatus`
-
-## File Structure ##
+## File Structure
 
 ```
 react-memory-game
 ├── assets
-    │   ├── ...
-    │   └── zeppelin.png
-    ├── components
-    │   ├── MemoryGame.jsx
-    │   ├── chessboard
-    │   │   ├── Card.jsx
-    │   │   └── Chessboard.jsx
-    │   ├── dashboard
-    │   │   ├── Dashboard.jsx
-    │   │   ├── Logo.jsx
-    │   │   ├── MatchInfo.jsx
-    │   │   └── Score.jsx
-    │   └── footer
-    │       └── PlayStatus.jsx
-    ├── containers
-    │   ├── VisibleMemoryGame.jsx
-    │   ├── chessboard
-    │   │   └── VisibleChessboard.jsx
-    │   ├── dashboard
-    │   │   └── VisibleDashboard.jsx
-    │   └── footer
-    │       └── VisiblePlayStatus.jsx
-    ├── store
-    │   ├── action.js
-    │   ├── actionType.js
-    │   └── reducer.js
-    ├── dev.jsx
-    ├── index.html
-    └── prod.jsx
+    ├── ...
+    └── zeppelin.png
+├── helpers
+    ├── dva
+    ├── gameData
+    ├── object
+    ├── utils
+    └── view
+├── layouts
+    └── index
+├── pages
+    ├── game
+    │   ├── components
+    │   │   ├── Card
+    │   │   ├── Chessboard
+    │   │   ├── Dashboard
+    │   │   ├── Logo
+    │   │   ├── MatchInfo
+    │   │   ├── PlayStatus
+    │   │   └── Score
+    │   ├── models
+    │   │   └── game
+    │   └── index
+    ├── document.ejs
+    └── index
 ```
 
-## Want Having a try locally? ##
+## Want Having a try locally?
 
 ```bash
 #cloning code
@@ -84,11 +71,9 @@ npm start
 
 Now, view the demo at [http://localhost:8080](http://localhost:8080)
 
-
-## LICENSE ##
+## LICENSE
 
 [MIT License](https://raw.githubusercontent.com/leftstick/react-memory-game/master/LICENSE)
-
 
 [david-url]: https://david-dm.org/leftstick/react-memory-game.png
 [license-url]: https://img.shields.io/github/license/leftstick/react-memory-game.svg
