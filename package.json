@@ -1,6 +1,6 @@
 {
   "name": "react-memory-game",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "GPL-3.0",
   "scripts": {
     "start": "umi dev",
@@ -9,36 +9,30 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "lint-staged": {
-    "*.js": "eslint --max-warnings=0 --ignore-pattern !.umirc*.js"
+    "*.js": "eslint --max-warnings=0"
   },
   "dependencies": {
-    "@ant-design/icons": "^2.1.0",
-    "axios": "^0.19.0",
-    "classnames": "^2.2.6",
-    "dva": "^2.4.1"
+    "@umijs/hooks": "^1.9.2",
+    "classnames": "^2.2.6"
   },
   "devDependencies": {
-    "babel-eslint": "^9.0.0",
-    "babel-plugin-import": "^1.12.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-config-umi": "^1.4.5",
-    "eslint-plugin-flowtype": "^2.50.3",
-    "eslint-plugin-import": "^2.17.3",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.13.0",
-    "eslint-plugin-react-hooks": "^1.6.0",
-    "gh-pages": "^2.0.1",
-    "husky": "^2.4.0",
-    "lint-staged": "^8.2.0",
-    "prettier": "^1.18.0",
-    "redbox-react": "^1.6.0",
-    "umi": "^2.7.2",
-    "umi-plugin-react": "^1.8.2"
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/classnames": "^2.2.10",
+    "@umijs/plugin-model": "^2.3.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.7",
+    "react-coding-style": "^1.0.0",
+    "umi": "^3.1.2"
   }
 }
