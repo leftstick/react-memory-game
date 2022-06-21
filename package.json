@@ -5,7 +5,7 @@
   "scripts": {
     "build": "max build",
     "deploy": "max build && gh-pages -d dist",
-    "postinstall": "max setup",
+    "postinstall": "husky install && max setup",
     "start": "max dev"
   },
   "dependencies": {
