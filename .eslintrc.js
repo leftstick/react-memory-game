@@ -1,3 +1,5 @@
+// .eslintrc.js
 module.exports = {
-  extends: [require.resolve('react-coding-style/src/eslint')]
-}
+  // Umi 项目
+  extends: require.resolve('umi/eslint'),
+};

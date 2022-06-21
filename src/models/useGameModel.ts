@@ -1,8 +1,8 @@
-import { useState, useCallback, useRef } from 'react'
-import { useLocalStorageState } from '@umijs/hooks'
+import { useLocalStorageState } from 'ahooks'
+import { useCallback, useRef, useState } from 'react'
 
 import { shuffleCards } from '@/helpers'
-import { STATUS, ICard } from '@/ITypes'
+import { ICard, STATUS } from '@/ITypes'
 
 export default function useGameModel() {
   const [leftMatched, setLeftMatched] = useState(8)
@@ -10,7 +10,9 @@ export default function useGameModel() {
   const [allCards, setAllCards] = useState<ICard[]>(shuffleCards())
   const [lastCard, setLastCard] = useState<ICard>()
   const [elapsedMs, setElapsedMs] = useState(0)
-  const [highestSpeed, setHighestSpeed] = useLocalStorageState('highestSpeed', 9999)
+  const [highestSpeed, setHighestSpeed] = useLocalStorageState('highestSpeed', {
+    defaultValue: 9999,
+  })
   const gameCounter = useRef<number>()
 
   const reset = useCallback(() => {
@@ -23,7 +25,7 @@ export default function useGameModel() {
   const startGame = useCallback(() => {
     setStatus(STATUS.PLAYING)
     gameCounter.current = window.setInterval(() => {
-      setElapsedMs(s => s + 1)
+      setElapsedMs((s) => s + 1)
     }, 1000)
   }, [])
 
@@ -31,20 +33,20 @@ export default function useGameModel() {
     setStatus(STATUS.PASS)
     clearInterval(gameCounter.current)
     gameCounter.current = undefined
-    setHighestSpeed(s => (s! > elapsedMs ? elapsedMs : s!))
+    setHighestSpeed((s) => (s! > elapsedMs ? elapsedMs : s!))
   }, [elapsedMs, setHighestSpeed])
 
   const flipCards = useCallback((cards: ICard[]) => {
-    setAllCards(allCards =>
-      allCards.map(a => {
-        if (cards.some(c => c.id === a.id)) {
+    setAllCards((allCards) =>
+      allCards.map((a) => {
+        if (cards.some((c) => c.id === a.id)) {
           return {
             ...a,
-            flipped: !a.flipped
+            flipped: !a.flipped,
           }
         }
         return a
-      })
+      }),
     )
   }, [])
 
@@ -62,7 +64,7 @@ export default function useGameModel() {
       if (lastCard !== card && lastCard.name === card.name) {
         setLastCard(undefined)
 
-        setLeftMatched(l => l - 1)
+        setLeftMatched((l) => l - 1)
 
         if (leftMatched === 1) {
           endGame()
@@ -76,7 +78,7 @@ export default function useGameModel() {
         flipCards([cachedLastCard, card])
       }, 1000)
     },
-    [startGame, endGame, flipCards, lastCard, leftMatched, status]
+    [startGame, endGame, flipCards, lastCard, leftMatched, status],
   )
 
   return {
@@ -86,6 +88,6 @@ export default function useGameModel() {
     elapsedMs,
     highestSpeed,
     reset,
-    flipCard
+    flipCard,
   }
 }

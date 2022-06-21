@@ -1,8 +1,8 @@
+import { useModel } from '@umijs/max'
 import React, { useMemo } from 'react'
-import { useModel } from 'umi'
 
 import { pick } from '@/helpers'
-import { STATUS, IClickable } from '@/ITypes'
+import { IClickable, STATUS } from '@/ITypes'
 
 import styles from './index.less'
 
@@ -11,11 +11,13 @@ const PLAYING = () => <span>Playing</span>
 const PASS = ({ onClick }: IClickable) => (
   <b
     className={styles.playAgain}
-    onClick={e => {
+    onClick={(e) => {
       e.preventDefault()
       e.stopPropagation()
 
-      onClick && onClick(e)
+      if (onClick) {
+        onClick(e)
+      }
     }}
   >
     Play again
@@ -23,7 +25,9 @@ const PASS = ({ onClick }: IClickable) => (
 )
 
 function PlayStatus() {
-  const { elapsedMs, status, reset } = useModel('useGameModel', model => pick(model, 'elapsedMs', 'status', 'reset'))
+  const { elapsedMs, status, reset } = useModel('useGameModel', (model) =>
+    pick(model, 'elapsedMs', 'status', 'reset'),
+  )
 
   const gameStatus = useMemo(() => {
     if (status === STATUS.READY) {

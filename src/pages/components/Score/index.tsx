@@ -1,12 +1,14 @@
+import { useModel } from '@umijs/max'
 import React from 'react'
-import { useModel } from 'umi'
 
 import { pick } from '@/helpers'
 
 import styles from './index.less'
 
 function Score() {
-  const { highestSpeed } = useModel('useGameModel', model => pick(model, 'highestSpeed'))
+  const { highestSpeed } = useModel('useGameModel', (model) =>
+    pick(model, 'highestSpeed'),
+  )
 
   return (
     <div className={styles.score}>

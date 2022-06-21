@@ -1,5 +1,5 @@
+import { useModel } from '@umijs/max'
 import React from 'react'
-import { useModel } from 'umi'
 
 import { pick } from '@/helpers'
 
@@ -8,9 +8,7 @@ import Card from '../Card'
 import styles from './index.less'
 
 function Chessboard() {
-  const { cards } = useModel('useGameModel', model => pick(model, 'cards'))
-
-  console.log('cards', cards)
+  const { cards } = useModel('useGameModel', (model) => pick(model, 'cards'))
 
   return (
     <div className={styles.chessboard}>

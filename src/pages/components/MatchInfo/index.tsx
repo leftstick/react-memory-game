@@ -1,12 +1,14 @@
+import { useModel } from '@umijs/max'
 import React from 'react'
-import { useModel } from 'umi'
 
 import { pick } from '@/helpers'
 
 import styles from './index.less'
 
 function MatchInfo() {
-  const { leftMatched } = useModel('useGameModel', model => pick(model, 'leftMatched'))
+  const { leftMatched } = useModel('useGameModel', (model) =>
+    pick(model, 'leftMatched'),
+  )
 
   return (
     <div className={styles.board}>
