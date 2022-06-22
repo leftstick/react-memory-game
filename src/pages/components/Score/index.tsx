@@ -9,7 +9,7 @@ function Score() {
   )
 
   return (
-    <div className="w-[120px] p-[10px] bg-[#bbada0] rounded-md flex flex-col justify-between items-center">
+    <div className="md:w-[120px] sm:w-[110px] p-[10px] h-full bg-[#bbada0] rounded-md flex flex-col justify-between items-center">
       <span className="text-lg font-bold text-center text-[#eae0d1]">
         Highest Speed
       </span>

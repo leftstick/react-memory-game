@@ -9,8 +9,8 @@ function MatchInfo() {
   )
 
   return (
-    <div className="w-[120px] p-[10px] bg-[#bbada0] rounded-md flex flex-col justify-between items-center ">
-      <div className="text-lg font-bold text-center text-[#eae0d1]">
+    <div className="md:w-[120px] sm:w-[110px] p-[10px] h-full bg-[#bbada0] rounded-md flex flex-col justify-between items-center ">
+      <div className="text-base font-bold text-center text-[#eae0d1]">
         Pairs Left To Match
       </div>
       <h2 className="text-white font-bold">{leftMatched}</h2>

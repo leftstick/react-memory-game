@@ -19,7 +19,7 @@ function Card({ style, value }: ICardProps) {
 
   return (
     <div
-      className="w-[100px] h-[121px] mr-[3px] cursor-pointer relative"
+      className="md:w-[100px] sm:w-[90px] md:h-[121px] sm:h-[108px] mr-[3px] cursor-pointer relative"
       onClick={() => flipCard(value)}
       style={style}
     >
