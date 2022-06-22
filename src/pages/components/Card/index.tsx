@@ -5,8 +5,6 @@ import React from 'react'
 import { getImage, pick } from '@/helpers'
 import { ICard } from '@/ITypes'
 
-import styles from './index.less'
-
 interface ICardProps {
   style?: React.CSSProperties
   value: ICard
@@ -21,14 +19,23 @@ function Card({ style, value }: ICardProps) {
 
   return (
     <div
-      className={styles.container}
+      className="w-[100px] h-[121px] mr-[3px] cursor-pointer relative"
       onClick={() => flipCard(value)}
       style={style}
     >
-      <div className={classnames(styles.card, { [styles.flipped]: flipped })}>
-        <img className={styles.front} src={getImage(name)} alt="card" />
+      <div
+        className={classnames(
+          'w-full h-full transition-transform duration-1000 style-3d relative',
+          { ['rotatey-180']: flipped },
+        )}
+      >
         <img
-          className={styles.back}
+          className="absolute block w-full h-full backface-hidden bg-blue-600 rotatey-180"
+          src={getImage(name)}
+          alt="card"
+        />
+        <img
+          className="absolute block w-full h-full backface-hidden bg-blue-600 rotatey-0"
           src={getImage('URL_BACK')}
           alt="back-card"
         />

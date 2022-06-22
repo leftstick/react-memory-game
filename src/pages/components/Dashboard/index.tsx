@@ -4,11 +4,9 @@ import Logo from '../Logo'
 import MatchInfo from '../MatchInfo'
 import Score from '../Score'
 
-import styles from './index.less'
-
 function Dashboard() {
   return (
-    <div className={styles.statusBar}>
+    <div className="w-full h-[100px] flex justify-between items-center">
       <Logo />
       <MatchInfo />
       <Score />

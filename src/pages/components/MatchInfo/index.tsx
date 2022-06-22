@@ -3,17 +3,17 @@ import React from 'react'
 
 import { pick } from '@/helpers'
 
-import styles from './index.less'
-
 function MatchInfo() {
   const { leftMatched } = useModel('useGameModel', (model) =>
     pick(model, 'leftMatched'),
   )
 
   return (
-    <div className={styles.board}>
-      <span>Pairs Left To Match</span>
-      <h2>{leftMatched}</h2>
+    <div className="w-[120px] p-[10px] bg-[#bbada0] rounded-md flex flex-col justify-between items-center ">
+      <div className="text-lg font-bold text-center text-[#eae0d1]">
+        Pairs Left To Match
+      </div>
+      <h2 className="text-white font-bold">{leftMatched}</h2>
     </div>
   )
 }

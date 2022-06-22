@@ -4,13 +4,11 @@ import React, { useMemo } from 'react'
 import { pick } from '@/helpers'
 import { IClickable, STATUS } from '@/ITypes'
 
-import styles from './index.less'
-
 const READY = () => <span>Ready</span>
 const PLAYING = () => <span>Playing</span>
 const PASS = ({ onClick }: IClickable) => (
   <b
-    className={styles.playAgain}
+    className="cursor-pointer no-underline text-base"
     onClick={(e) => {
       e.preventDefault()
       e.stopPropagation()
@@ -44,9 +42,11 @@ function PlayStatus() {
   }, [status, reset])
 
   return (
-    <div className={styles.statusBar}>
+    <div className="relative mt-[5px] w-full h-[20px] flex justify-center items-center text-xl font-bold">
       {gameStatus}
-      <span className={styles.elapsed}>{elapsedMs} s</span>
+      <span className="absolute right-[10px] text-base font-normal">
+        {elapsedMs} s
+      </span>
     </div>
   )
 }
