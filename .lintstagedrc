@@ -1,3 +1,5 @@
 {
-  "*.{js,jsx,ts,tsx,css,less}":  ["umi lint"]
+  "*.{js,jsx,ts,tsx,css,less}": [
+    "max lint"
+  ]
 }

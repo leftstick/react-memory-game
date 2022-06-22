@@ -9,20 +9,20 @@ export default defineConfig({
   title: 'React Memory Game',
   styles: [
     `
-    * {
-      box-sizing: border-box;
-      padding: 0;
-      margin: 0;
-    }
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  `,
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    `,
   ],
   tailwindcss: {},
 })
